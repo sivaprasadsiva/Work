@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\FormController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Login');
 });
+
+// Route::get('/Register', function () {
+//     return view('Register');
+// });
+Route::get('/regiter', [FormController::class,'register'])->name('register');
+
+Route::post('/submit-form', [FormController::class,'submitForm'])->name('submit-form');
+
+Route::post('/login', [FormController::class,'loginForm'])->name('login-form');
+
+Route::get('/home',[FormController::class,'home'])->name('home');
+
+Route::get('/admin-home',[FormController::class,'adminHome'])->name('admin-home');
+
+Route::get('/user-home',[FormController::class,'userHome'])->name('user-home');
